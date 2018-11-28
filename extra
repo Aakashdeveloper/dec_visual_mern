@@ -1,0 +1,11 @@
+package.json
+
+json => javascript object notation
+
+seed (starter file)
+
+npm install -g create-react-app
+
+create-react-app firstapp
+
+npm start
