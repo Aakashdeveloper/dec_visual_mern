@@ -12,6 +12,7 @@ class Header extends React.Component {
     dataChange(event){
         console.log(event.target.value)
         this.setState({keywords: event.target.value})
+        this.props.searchKeyword(event.target.value)
     }
 
     render(){
