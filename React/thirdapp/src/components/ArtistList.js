@@ -1,11 +1,21 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom';
 
 const ArtistList = (props) => {
     const list = ({allArtist}) => {
         if(allArtist){
-            return allArtist.map((data) => {
+            return allArtist.map((data, index) => {
+                const style = {
+                    background:`url('/images/covers/${data.cover}.jpg') no-repeat`
+                }
                 return(
-                    <div>Hii</div>
+                   <Link key={data.id} to={`/artist/${data.id}`} 
+                        className="artist_item"
+                        style={style}>
+
+                        <div>{data.name}</div>
+                        
+                   </Link>
                 )
             })
         }
@@ -20,3 +30,12 @@ const ArtistList = (props) => {
 }
 
 export default ArtistList;
+
+
+/*
+var a = 10
+var b = "my age is "+ a
+my age is 10
+
+var b = `my age is ${a}`
+*/
