@@ -27,7 +27,7 @@ class MoviesList extends Component{
   }
 }
 
-function mapStateToProps(state){
+const mapStateToProps = (state) =>{
   console.log(state)
   return{
     movies:state.movies
