@@ -20,3 +20,32 @@ export function otherNews(){
             payload: request
         }
 }
+
+export function latestGallery(){
+    const request = fetch(`${baseUrl}galleries`,
+    {method:'GET'})
+        .then(response => response.json())
+        return{
+            type:'GET_LATEST_GALLERY',
+            payload: request
+        }
+}
+
+
+export function selectedNews(id){
+    const request = fetch(`${baseUrl}articles?id=${id}`,
+    {method:'GET'})
+        .then(response => response.json())
+        return{
+            type:'GET_SELECTED_NEWS',
+            payload: request
+        }
+}
+
+
+export function clearselectedNews(){
+    return{
+        type:'CLEAR_SELECTED_NEWS',
+        payload: []
+    }
+}
