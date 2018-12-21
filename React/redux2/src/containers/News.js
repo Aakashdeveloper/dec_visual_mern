@@ -1,16 +1,21 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectedNews, clearselectedNews} from '../actions'
-import { bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 
-class News extends Component{
+// HITS COUNTER
+import Counter from './LikesCounter'
+
+
+class News extends Component {
+
     componentDidMount(){
         this.props.selectedNews(this.props.match.params.id)
     }
-
     componentWillUnmount(){
-        this.props.clearselectedNews();
+        this.props.clearselectedNews()
     }
+
     renderNews = ({selected}) =>{
         console.log(selected)
         if(selected){
@@ -36,28 +41,38 @@ class News extends Component{
                         <div className="body_news">
                             {item.body}
                         </div>
+                        <div>
+                           <Counter 
+                           articleId={item.id}
+                           type="HANDLE_LIKES_ARTICLE"
+                           section="articles"
+                           likes={item.likes[0]}
+                           dislikes={item.likes[1]} />
+                        </div>
                     </div>
                 )
             })
         }
     }
-    render(){
-        return(
+
+
+    render() {
+        return (
             <div className="news_container">
                 {this.renderNews(this.props.articles)}
             </div>
-        )
+        );
     }
 }
 
-function mapStateToProps(state){
-    return{
-        articles:state.articles
+function mapStateToProps(state) {
+    return {
+        articles:state.articles,
     }
 }
 
-function mapDispatchToProps(disptach){
-    return bindActionCreators({selectedNews, clearselectedNews}, disptach)
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({selectedNews,clearselectedNews}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(News);
+export default connect(mapStateToProps,mapDispatchToProps)(News)
