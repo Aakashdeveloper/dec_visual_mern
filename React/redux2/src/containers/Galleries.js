@@ -85,3 +85,22 @@ function mapDispatchToProps(disptach){
 export default connect(mapStateToProps, mapDispatchToProps)(Galleries);
 
 
+var data = [
+    {"name":"aa", "classn":"angular", "rollno":1},
+    {"name":"bb", "classn":"angular", "rollno":2}
+]
+
+
+checkname= (name) =>{
+    out = name.i
+    return name
+}
+
+
+var jsonData = [{"name":"name1","value":"value1"},{"name":"name2","value":"value2"}];
+for(var i=0;i<jsonData.length;i++){
+  if(jsonData[i]['name'] == 'name2'){
+    console.log('The value is: ' + jsonData[i]['value']);
+    break;
+  }
+}

@@ -9,3 +9,17 @@ npm install -g create-react-app
 create-react-app firstapp
 
 npm start
+
+
+=============
+Node
+=============
+single thread non block async I/O
+
+template engine
+
+MERN
+Server
+
+
+sudo npm install -g nodemon
