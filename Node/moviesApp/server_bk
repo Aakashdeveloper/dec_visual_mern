@@ -1,0 +1,118 @@
+import express from 'express';
+import chalk from 'chalk';
+import morgan from 'morgan'
+
+let moviesRouter = express.Router();
+let artistRouter = express.Router();
+
+let app = express();
+
+app.use(express.static(__dirname+'/public'));
+app.set('views', './src/views');
+app.set('view engine', 'ejs')
+
+app.use(morgan('tiny'))
+
+var navArray = [{link:'/', title:'Home'},
+                {link:'/movies', title:'Movies'},
+                {link:'/artist', title:'Artits'}];
+
+var movies = [
+    {
+      "_id": "5ab12612f36d2879268f284a",
+      "name": "Black Panther",
+      "language": "ENGLISH",
+      "rate": 4.5,
+      "type": "Action Adventure Fantasy",
+      "imageUrl": "https://image.ibb.co/f0hhZc/bp.jpg"
+    },
+    {
+      "_id": "5ab12666f36d2879268f2902",
+      "name": "Death Wish",
+      "language": "ENGLISH",
+      "type": "Action Crime Thriller",
+      "rate": 3.2,
+      "imageUrl": "https://image.ibb.co/gC9PfH/dw.jpg"
+    },
+    {
+      "_id": "5ab12678f36d2879268f291d",
+      "name": "Coco",
+      "language": "ENGLISH",
+      "type": "Adventure Animation Family",
+      "rate": 5,
+      "imageUrl": "https://image.ibb.co/dQwWSx/coco.jpg"
+    },
+    {
+      "_id": "5ab126b6f36d2879268f2943",
+      "name": "Avengers",
+      "language": "ENGLISH",
+      "type": "Actione",
+      "rate": 2,
+      "imageUrl": "https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/04/01/Pictures/_46a0b2c0-3590-11e8-8c5f-3c6cc031651e.jpg"
+    }
+]
+
+app.get('/', (req,res,err) => {
+    res.render('index', {title:'Home Page',nav:navArray})
+})
+
+moviesRouter.route('/')
+    .get((req,res) => {
+        res.render('movies', {
+            title:'Movies Page',
+            nav:navArray,
+            data:movies})
+    })
+
+moviesRouter.route('/details')
+    .get((req,res) => {
+        res.render('movies', {
+            title:'Detail Page',
+            nav:navArray,
+            data:movies})
+    })
+
+artistRouter.route('/')
+    .get((req,res) => {
+        res.render('artist', {
+            title:'Artist Page',
+            nav:navArray,
+            data:movies})
+    })
+
+artistRouter.route('/details')
+    .get((req,res) => {
+        res.render('artistDetail', {
+            title:'Artist Detail Page',
+            nav:navArray,
+            data:movies})
+    })
+
+
+
+app.use('/movies', moviesRouter);
+app.use('/artist', artistRouter);
+
+app.listen(3400,(err) => {
+    if(err){
+        console.log("error")
+    }
+    console.log(`server is running on port ${chalk.blue('3400')}`)
+})
+
+
+
+/*
+app.get('/', function(req,res,err){
+    res.send("Hi welcome to node express mongo react")
+})
+
+
+
+app.listen(3400, function(err){
+    if(err){
+        console.log("error")
+    }
+    console.log("server is running on port 3400")
+})
+*/
