@@ -34,3 +34,14 @@ handlebar
 swig
 pug
 vash
+
+
+==================
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+
+JSON
+
+SQL             Mongo
+database   =>   Database
+table      =>   Collections
+row        =>   Documnet

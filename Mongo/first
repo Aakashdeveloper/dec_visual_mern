@@ -1,0 +1,43 @@
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+
+JSON
+
+SQL             Mongo
+database   =>   Database
+table      =>   Collections
+row        =>   Documnet
+
+===============
+show dbs 
+use acadgild_aug
+show collections
+db.books.find()
+db.books.find().pretty()
+db.books.find({rate:4.5,name:"martians"}).pretty()
+db.books.find({rate:4.5,name:"martians"},{rate:1,name:1,_id:0}).pretty()
+db.books.find({},{rate:1,name:1,_id:0}).pretty()
+
+
+use navdeep
+db.first.insert({name:"Navdeep",subject:"MERN"})
+
+db.movies.insertMany(
+    [
+        {
+            "_id": "5ab12612f36d2879268f284a",
+            "name": "Black Panther",
+            "language": "ENGLISH",
+            "rate": 4.5,
+            "type": "Action Adventure Fantasy",
+            "imageUrl": "https://image.ibb.co/f0hhZc/bp.jpg"
+        },
+        {
+            "_id": "5ab12666f36d2879268f2902",
+            "name": "Death Wish",
+            "language": "ENGLISH",
+            "type": "Action Crime Thriller",
+            "rate": 3.2,
+            "imageUrl": "https://image.ibb.co/gC9PfH/dw.jpg"
+        }
+    ]
+)
