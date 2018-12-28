@@ -1,0 +1,16 @@
+db.first.update({name:"AAKASH"},{subject:"AI"})
+
+db.first.update({name:"AAKASH"},
+                {$set:{subject:"Erlang"}},
+                {multi: true})
+
+db.first.update({name:"Tiffeny"},
+                {$set:{subject:"AX"}},
+                {upsert:true})
+
+ db.movies.drop()
+
+db.first.deleteOne({name:"Tiffeny"})
+db.first.deleteMany({name:"AAKASH"})
+
+CRUD
